@@ -1,17 +1,8 @@
 import '@/styles/globals.css';
-
-import { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import { ReactNode } from 'react';
-
 import { MainProvider } from '@/components/providers/MainProvider';
 import { MainLayout } from '@/components/templates/MainLayout';
 
-import { cn } from '@/lib/utils';
-
-const inter = Inter({ subsets: ['greek'], variable: '--font-primary' });
-
-
+import { ReactNode } from 'react';
 
 interface RootLayoutProps {
   children: ReactNode;
@@ -20,7 +11,7 @@ interface RootLayoutProps {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="en">
-      <body className={cn(inter.variable, 'font-normal')} suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <MainProvider>
           <MainLayout>
             <main>{children}</main>

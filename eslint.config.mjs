@@ -69,6 +69,8 @@ export default [
     },
 
     rules: {
+      'react/no-unescaped-entities': 'off',
+      '@next/next/no-page-custom-font': 'off',
       'newline-before-return': 2,
       'react/prop-types': 0,
       'react/react-in-jsx-scope': 0,
@@ -102,7 +104,7 @@ export default [
       'no-console': [
         2,
         {
-          allow: ['warn', 'error']
+          allow: ['warn']
         }
       ]
     }
