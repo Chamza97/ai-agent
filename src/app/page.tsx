@@ -33,7 +33,7 @@ const HomePage = () => {
               </div>
               <div className="mt-10  gap-x-6">
                 <h5 className=" font-semibold tracking-tight text-balance text-white ">
-                  CONTRACT ADDRESS to be communicated  AT LAUNCH
+                  CA TBA
                 </h5>
               </div>
             </div>

@@ -60,7 +60,7 @@ const CreateAgent = () => {
                     Discover AI Agents created by our community.
                   </p>
                 </div>
-                <div className="mx-auto  grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
                   {posts.map((post) => (
                     <article
                       key={post.id}
@@ -71,7 +71,6 @@ const CreateAgent = () => {
                           <FaRobot color="#fff" className="inline mr-1" />
                           {post.agent_name}
                         </h2>
-
                         <p className="text-sm/6 text-gray-500">Created by @{post.author.name}</p>
                       </div>
                       <div className="group relative">
