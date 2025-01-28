@@ -121,7 +121,7 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
       <footer className="bg-gray-900">
         <div className="flex content-center max-w-7xl px-6 pt-1 pb-5 mt-2 sm:pt-1 lg:px-8 lg:pt-1">
           <div className="mx-auto  md:flex flex items-center md:items-center md:justify-between ">
-            <div className="flex gap-x-6 2">
+            <div className="flex gap-x-4 ">
               {navigation.social.map((item) => (
                   <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-300">
                     <span className="sr-only">{item.name}</span>
