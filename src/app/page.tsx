@@ -10,11 +10,12 @@ const HomePage = () => {
           <div className="mx-auto max-w-8xl px-4 lg:px-10">
             <div className="mx-auto max-w-2xl text-center">
               <h1 className="text-2xl font-semibold tracking-tight text-balance text-white sm:text-6xl">
-                Create your own AI agent for Twitter
+                Create, customize and deploy AI agents on X
               </h1>
               <p className="mt-8 text-lg font-medium text-pretty text-gray-400 sm:text-xl/8">
-                Deploy intelligent AI agent that engage with your audience 27/7 Customize their
-                personality, set their tasks and watch them gow your Twitter presence.
+                Developing your fleet of autonomoud agents should be straightforward, efficient,
+                and decentralized. AgentX Hub offers users a fluid experience to build precision-focused AI
+                agents without any technical skill.
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <a
@@ -29,6 +30,11 @@ const HomePage = () => {
                 >
                   Browse your Agent
                 </a>
+              </div>
+              <div className="mt-10  gap-x-6">
+                <h5 className=" font-semibold tracking-tight text-balance text-white ">
+                  CONTRACT ADDRESS to be communicated  AT LAUNCH
+                </h5>
               </div>
             </div>
           </div>
