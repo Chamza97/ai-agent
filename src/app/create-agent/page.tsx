@@ -12,7 +12,6 @@ const CreateAgent = () => {
                     Create your AI Agents personality and behaviour for twitter.
                   </p>
                   <div className="mt-2 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-
                     <div className="col-span-full">
                       <label
                           htmlFor="agent-name"

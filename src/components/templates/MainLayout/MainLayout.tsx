@@ -64,7 +64,7 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
             <a href="/" className="-m-1.5 p-1.5 text-white">
-              <Image width={75}  height={75} src="/Trianglelogo3.jpg" alt="logo"/>
+              <Image width={60}  height={60} src="/Trianglelogo3.jpg" alt="logo"/>
             </a>
           </div>
           <div className="flex lg:hidden">
@@ -73,7 +73,7 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
               onClick={() => setMobileMenuOpen(true)}
               className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-400"
             >
-              <MdOutlineMenu color="white"/>
+              <MdOutlineMenu color="white" size={30} />
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
@@ -101,7 +101,7 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
         </nav>
         <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
           <div className="fixed inset-0 z-50" />
-          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gray-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
+          <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
@@ -120,6 +120,14 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-500/25">
                 <div className="py-5">
+                  <div className="py-5">
+                    <a
+                        href="/"
+                        className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:bg-gray-800"
+                    >
+                      home
+                    </a>
+                  </div>
                   <a
                     href="/create-agent"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-white hover:bg-gray-800"
@@ -135,14 +143,26 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
                     Browse agents
                   </a>
                 </div>
+                <div className="mx-auto flex gap-x-4 content-center ">
+                  <div className="py-5 mx-auto flex gap-x-4 ">
+                    {navigation.social.map((item) => (
+                        <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-300">
+                          <span className="sr-only">{item.name}</span>
+                          <item.icon aria-hidden="true" className="size-6" />
+                        </a>
+                    ))}
+                  </div>
+                </div>
+
               </div>
             </div>
           </DialogPanel>
         </Dialog>
       </header>
+
       <main className="flex-1">{children}</main>
 
-      <footer className="bg-gray-900">
+      <footer className="bg-black">
         <div className="flex content-center max-w-7xl px-6 pt-1 pb-5 mt-2 sm:pt-1 lg:px-8 lg:pt-1">
           <div className="mx-auto  md:flex flex items-center md:items-center md:justify-between ">
             <div className="flex gap-x-4 ">
@@ -153,7 +173,6 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
                   </a>
               ))}
             </div>
-
           </div>
         </div>
       </footer>
