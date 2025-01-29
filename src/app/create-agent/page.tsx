@@ -81,18 +81,13 @@ const CreateAgent = () => {
     const newErrors = validateForm(updatedFormData);
     setErrors(newErrors);
   };
-  const { isPending, error, data } = useQuery({
+  const {  error, data } = useQuery({
     queryKey: ['repoData'],
     queryFn: () =>
         fetch('https://api.github.com/repos/TanStack/query').then((res) =>
             res.json(),
         ),
   })
-
-  if (isPending) return 'Loading...'
-
-  if (error) return 'An error has occurred: ' + error.message
-
 
   return (
     <div className="bg-black">
