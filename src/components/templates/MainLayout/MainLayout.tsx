@@ -5,6 +5,7 @@ import { Dialog, DialogPanel } from '@headlessui/react';
 import Image from "next/image";
 import { MdOutlineMenu } from "react-icons/md";
 import {XMarkIcon} from "@heroicons/react/24/outline";
+import Toaster from "react-hot-toast";
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -163,6 +164,8 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
       <main className="flex-1">{children}</main>
 
       <footer className="bg-black">
+        <Toaster/>
+
         <div className="flex content-center max-w-7xl px-6 pt-1 pb-5 mt-2 sm:pt-1 lg:px-8 lg:pt-1">
           <div className="mx-auto  md:flex flex items-center md:items-center md:justify-between ">
             <div className="flex gap-x-4 ">
