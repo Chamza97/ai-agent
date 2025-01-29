@@ -5,26 +5,27 @@ import { useState, ChangeEvent, FormEvent  } from "react";
 import {useMutation, useQuery, useQueryClient} from "react-query";
 import axios from "axios";
 import { toast } from 'react-hot-toast';
+
 const CreateAgentSchema = z.object({
   name: z.string().nonempty(),
-  personalityPrompt: z.string().min(3),
-  apiKey: z.string().min(3),
-  apiSecret: z.string().min(3),
-  accessToken: z.string().min(3),
-  accessTokenSecret: z.string().min(3),
-  bearerToken: z.string().min(3),
+  personality_prompt: z.string().min(3),
+  TWITTER_API_KEY: z.string().min(3),
+  TWITTER_API_SECRET_KEY: z.string().min(3),
+  TWITTER_ACCESS_TOKEN: z.string().min(3),
+  TWITTER_ACCESS_TOKEN_SECRET: z.string().min(3),
+  TWITTER_BEARER_TOKEN: z.string().min(3),
 });
 const CreateAgent = () => {
   type FormData = z.infer<typeof CreateAgentSchema>;
   type FormErrors = Partial<Record<keyof FormData, string[]>>;
   const [formData, setFormData] = useState<FormData>({
     name: "",
-    personalityPrompt: "",
-    apiKey: "",
-    apiSecret: '',
-    accessToken: "",
-    accessTokenSecret: "",
-    bearerToken: "",
+    personality_prompt: "",
+    TWITTER_API_KEY: "",
+    TWITTER_API_SECRET_KEY: '',
+    TWITTER_ACCESS_TOKEN: "",
+    TWITTER_ACCESS_TOKEN_SECRET: "",
+    TWITTER_BEARER_TOKEN: "",
   });
 
   const [errors, setErrors] = useState<FormErrors>({});
@@ -44,7 +45,7 @@ const CreateAgent = () => {
   axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
   axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
   const createAgent = async (data: FormData) => {
-    const { data: response } = await axios.post('https://1c7f-197-15-126-168.ngrok-free.app/create-agent', data);
+    const { data: response } = await axios.post('https://d25c-197-15-126-168.ngrok-free.app/create-agent', data);
     return response.data;
   };
   const queryClient = useQueryClient();
@@ -128,7 +129,7 @@ const CreateAgent = () => {
                     </div>
                     <div className="col-span-full">
                       <label
-                          htmlFor="apiKey"
+                          htmlFor="TWITTER_API_KEY"
                           className="block text-sm/6 font-medium text-white"
                       >
                        Api key
@@ -136,21 +137,21 @@ const CreateAgent = () => {
                       <div className="mt-2">
                         <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
                           <input
-                              id="apiKey"
-                              name="apiKey"
+                              id="TWITTER_API_KEY"
+                              name="TWITTER_API_KEY"
                               type="text"
                               onChange={handleChange}
-                              value={formData.apiKey}
+                              value={formData.TWITTER_API_KEY}
                               placeholder="api Key"
                               className="block w-full grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
                           />
                         </div>
-                        {errors.apiKey && <span className="text-red-500">{errors.apiKey[0]}</span>}
+                        {errors.TWITTER_API_KEY && <span className="text-red-500">{errors.TWITTER_API_KEY[0]}</span>}
                       </div>
                     </div>
                     <div className="col-span-full">
                       <label
-                          htmlFor="personalityPrompt"
+                          htmlFor="personality_prompt"
                           className="block text-sm/6 font-medium text-white"
                       >
                         Personality Prompt
@@ -158,21 +159,21 @@ const CreateAgent = () => {
                       <div className="mt-2">
                         <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
                           <input
-                              id="personalityPrompt"
-                              name="personalityPrompt"
+                              id="personality_prompt"
+                              name="personality_prompt"
                               type="text"
                               onChange={handleChange}
-                              value={formData.personalityPrompt}
+                              value={formData.personality_prompt}
                               placeholder="personality Prompt"
                               className="block w-full grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
                           />
                         </div>
-                        {errors.personalityPrompt && <span className="text-red-500">{errors.personalityPrompt[0]}</span>}
+                        {errors.personality_prompt && <span className="text-red-500">{errors.personality_prompt[0]}</span>}
                       </div>
                     </div>
                     <div className="col-span-full">
                       <label
-                          htmlFor="apiSecret"
+                          htmlFor="TWITTER_API_SECRET_KEY"
                           className="block text-sm/6 font-medium text-white"
                       >
                         Api Secret
@@ -180,21 +181,21 @@ const CreateAgent = () => {
                       <div className="mt-2">
                         <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
                           <input
-                              id="apiSecret"
-                              name="apiSecret"
+                              id="TWITTER_API_SECRET_KEY"
+                              name="TWITTER_API_SECRET_KEY"
                               type="text"
                               onChange={handleChange}
-                              value={formData.apiSecret}
+                              value={formData.TWITTER_API_SECRET_KEY}
                               placeholder="api Secret"
                               className="block w-full grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
                           />
                         </div>
-                        {errors.apiSecret && <span className="text-red-500">{errors.apiSecret[0]}</span>}
+                        {errors.TWITTER_API_SECRET_KEY && <span className="text-red-500">{errors.TWITTER_API_SECRET_KEY[0]}</span>}
                       </div>
                     </div>
                     <div className="col-span-full">
                       <label
-                          htmlFor="accessToken"
+                          htmlFor="TWITTER_ACCESS_TOKEN"
                           className="block text-sm/6 font-medium text-white"
                       >
                         Access Token
@@ -202,21 +203,21 @@ const CreateAgent = () => {
                       <div className="mt-2">
                         <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
                           <input
-                              id="accessToken"
-                              name="accessToken"
+                              id="TWITTER_ACCESS_TOKEN"
+                              name="TWITTER_ACCESS_TOKEN"
                               type="text"
                               onChange={handleChange}
-                              value={formData.accessToken}
+                              value={formData.TWITTER_ACCESS_TOKEN}
                               placeholder="access Token"
                               className="block w-full grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
                           />
                         </div>
-                        {errors.accessToken && <span className="text-red-500">{errors.accessToken[0]}</span>}
+                        {errors.TWITTER_ACCESS_TOKEN && <span className="text-red-500">{errors.TWITTER_ACCESS_TOKEN[0]}</span>}
                       </div>
                     </div>
                     <div className="col-span-full">
                       <label
-                          htmlFor="accessTokenSecret"
+                          htmlFor="TWITTER_ACCESS_TOKEN_SECRET"
                           className="block text-sm/6 font-medium text-white"
                       >
                         Access Token Secret
@@ -224,21 +225,21 @@ const CreateAgent = () => {
                       <div className="mt-2">
                         <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
                           <input
-                              id="accessTokenSecret"
-                              name="accessTokenSecret"
+                              id="TWITTER_ACCESS_TOKEN_SECRET"
+                              name="TWITTER_ACCESS_TOKEN_SECRET"
                               type="text"
                               onChange={handleChange}
-                              value={formData.accessTokenSecret}
+                              value={formData.TWITTER_ACCESS_TOKEN_SECRET}
                               placeholder="Access Token Secret"
                               className="block w-full grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
                           />
                         </div>
-                        {errors.accessTokenSecret && <span className="text-red-500">{errors.accessTokenSecret[0]}</span>}
+                        {errors.TWITTER_ACCESS_TOKEN_SECRET && <span className="text-red-500">{errors.TWITTER_ACCESS_TOKEN_SECRET[0]}</span>}
                       </div>
                     </div>
                     <div className="col-span-full">
                       <label
-                          htmlFor="bearerToken"
+                          htmlFor="TWITTER_BEARER_TOKEN"
                           className="block text-sm/6 font-medium text-white"
                       >
                         Bearer Token
@@ -246,16 +247,16 @@ const CreateAgent = () => {
                       <div className="mt-2">
                         <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
                           <input
-                              id="bearerToken"
-                              name="bearerToken"
+                              id="TWITTER_BEARER_TOKEN"
+                              name="TWITTER_BEARER_TOKEN"
                               type="text"
                               onChange={handleChange}
-                              value={formData.bearerToken}
+                              value={formData.TWITTER_BEARER_TOKEN}
                               placeholder="bearer Token "
                               className="block w-full grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
                           />
                         </div>
-                        {errors.bearerToken && <span className="text-red-500">{errors.bearerToken[0]}</span>}
+                        {errors.TWITTER_BEARER_TOKEN && <span className="text-red-500">{errors.TWITTER_BEARER_TOKEN[0]}</span>}
                       </div>
                     </div>
                   </div>
