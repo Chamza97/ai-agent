@@ -1,5 +1,11 @@
-import { FaRobot } from 'react-icons/fa';
+"use client"
 import Image from "next/image";
+import {useMutation, useQuery, useQueryClient} from "react-query";
+import axios from "axios";
+
+
+import { toast } from "react-toastify";
+import LoadingCircle from "@/components/Loader/loading-circle";
 const posts = [
   {
     id: 1,
@@ -43,15 +49,55 @@ const posts = [
     }
   }
 ];
+const getAgents = async () => {
 
-const CreateAgent = () => {
+  axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+  axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
+  try {
+    const response = await axios.get("https://a0cc-197-15-57-248.ngrok-free.app/agents",{
+      headers: { "ngrok-skip-browser-warning": "true" }
+    });
+    // Vérifie si la réponse contient bien des données
+
+    if (!response.data || !Array.isArray(response.data.agents)) {
+      throw new Error("Données invalides reçues de l'API");
+    }
+
+    // Formate chaque agent reçu dans le bon modèle
+    return response.data.agents;
+
+  } catch (error) {
+    throw new Error("Impossible de récupérer les agents.");
+  }
+};
+const BrowseAgents = () => {
+  const queryClient = useQueryClient();
+  axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
+  axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+
+  const { data: agents, isLoading, error } = useQuery({
+    queryKey: ["agents"],
+    queryFn: getAgents,
+    staleTime: 30, // Met en cache les données 5 minutes
+    retry: 2, // Tente de refaire la requête 2 fois en cas d'échec
+  });
+
+  if (isLoading) return <p>Chargement...</p>;
+
+
+
   return (
     <div className="bg-black">
+
       <div className="relative isolate ">
         <div className="py-24 sm:py-24 lg:pb-40">
           <div className="flex justify-center items-center flex-row">
             <div className="basis-2/3 p-5 rounded-lg">
               <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                <div className=" bg-red-500  text-center text-white w-full h-2" >
+
+                </div>
                 <div className="mx-auto max-w-2xl lg:mx-0">
                   <h2 className="text-2xl font-semibold tracking-tight text-pretty text-white sm:text-2xl">
                     Browse all agents created on our platform
@@ -61,32 +107,34 @@ const CreateAgent = () => {
                     Discover AI Agents created by our community.
                   </p>
                 </div>
+
                 <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                  {posts.map((post) => (
+
+                  {agents && agents.map((agent: any) => (
                     <article
-                      key={post.id}
+                      key={agent.id}
                       className="flex max-w-xl flex-col bg-gray-950 items-start  rounded-lg justify-between"
                     >
                       <div className="group relative text-white">
                         <h2 className="mt-2  text-white  text-sm/6 font-semibold">
 
                           <Image width={15}  height={15} src="/icons8-ai-64.png" className="inline mr-1" alt="logo"/>
-                          {post.agent_name}
+                          {agent.agent_name}
                         </h2>
-                        <p className="text-sm/6 text-gray-500">Created by @{post.author.name}</p>
+                        <p className="text-sm/6 text-gray-500">Created by @{agent.name}</p>
                       </div>
                       <div className="group relative">
                         <h2 className="mt-2 text-sm/6 font-semibold text-white">Personality</h2>
-                        <p className="text-sm/6  text-gray-500">{post.personality}</p>
+                        <p className="text-sm/6  text-gray-500">{agent.personality}</p>
                       </div>
-                      <div className="group relative">
-                        <h2 className="mt-2 text-sm/6 font-semibold text-white">Tasks</h2>
-                        <p className="text-sm/6 text-gray-500">{post.tasks}</p>
-                      </div>
+                      {/*<div className="group relative">*/}
+                      {/*  <h2 className="mt-2 text-sm/6 font-semibold text-white">Tasks</h2>*/}
+                      {/*  <p className="text-sm/6 text-gray-500">{post.tasks}</p>*/}
+                      {/*</div>*/}
                       <div className="relative  flex items-center ">
                         <div className="text-sm/6">
                           <a
-                            href={'' + post.twitter_link}
+                            href={'' + agent.twitter_link}
                             className="text-sky-700  font-semibold text-xs hover:text-gray-900 dark:hover:text-white dark:text-sky-700"
                           >
                             <svg
@@ -103,6 +151,7 @@ const CreateAgent = () => {
                       </div>
                     </article>
                   ))}
+
                 </div>
               </div>
             </div>
@@ -112,4 +161,4 @@ const CreateAgent = () => {
     </div>
   );
 };
-export default CreateAgent;
+export default BrowseAgents;
