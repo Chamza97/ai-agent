@@ -155,7 +155,7 @@ const CreateAgent = () => {
                           htmlFor="name"
                           className="block text-sm/6 font-medium text-white"
                       >
-                        Your X username
+                        Your agent username
                       </label>
                       <div className="mt-2">
                         <div className="flex items-center rounded-md bg-white/5 pl-3 outline-1 -outline-offset-1 outline-white/10 focus-within:outline-2 focus-within:-outline-offset-2 focus-within:outline-indigo-500">
