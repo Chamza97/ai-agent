@@ -5,6 +5,11 @@ import { useState, ChangeEvent, FormEvent  } from "react";
 import {useMutation, useQuery, useQueryClient} from "react-query";
 import axios from "axios";
 import { toast } from 'react-hot-toast';
+import MyDialog from "@/components/Dialog";
+import LoadingCircle from "@/components/Loader/loading-circle";
+import {XCircleIcon} from "@heroicons/react/16/solid";
+import { motion } from "framer-motion";
+
 
 const CreateAgentSchema = z.object({
   name: z.string().nonempty(),
@@ -30,7 +35,8 @@ const CreateAgent = () => {
 
   const [errors, setErrors] = useState<FormErrors>({});
   const [toastError, setToastError] = useState(false);
-
+  const [open, setOpen] = useState(false)
+  const [showError, setError] = useState(false)
   const validateForm = (data: FormData): FormErrors => {
     try {
       CreateAgentSchema.parse(data);
@@ -45,16 +51,19 @@ const CreateAgent = () => {
   axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
   axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
   const createAgent = async (data: FormData) => {
-    const { data: response } = await axios.post('https://a0cc-197-15-57-248.ngrok-free.app/create-agent', data);
+    const { data: response } = await axios.post('http://164.90.229.67:8000/create-agent', data);
     return response.data;
   };
   const queryClient = useQueryClient();
   const { mutate, isLoading } = useMutation(createAgent, {
     onSuccess: data => {
       console.log(data);
-       toast.success('Agent create with success');
+      // toast.success('Agent create with success');
+      setOpen(true)
     },
     onError: () => {
+      console.log("error")
+      setError(true)
       toast.error('Error while create AI agent !');
     },
     onSettled: () => {
@@ -89,13 +98,41 @@ const CreateAgent = () => {
             res.json(),
         ),
   })
-
+    console.log("loading", isLoading )
   return (
     <div className="bg-black">
       <div className="relative isolate ">
         <div className="py-24 sm:py-24 lg:pb-40">
           <div className="flex  justify-center items-center flex-row">
             <div className=" basis-2/3 p-5 bg-gray-950  rounded-lg">
+              <MyDialog openDialog={open} sendToParent={setOpen} />
+
+              { isLoading &&
+                  <motion.div
+                      initial={{ y: -20, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -20, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeOut" }}
+                      className="relative bg-white p-6 rounded-lg shadow-2xl max-w-sm w-full"
+                  >
+                  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 backdrop-blur-md z-50 ">
+                    <LoadingCircle />
+                  </div>
+                  </motion.div>
+              }
+              { showError &&
+                  <div className="rounded-md bg-red-50 p-4">
+                    <div className="flex">
+                      <div className="shrink-0">
+                        <XCircleIcon aria-hidden="true" className="size-5 text-red-400" />
+                      </div>
+                      <div className="ml-3">
+                        <h3 className="text-sm font-medium text-red-800">Error while creating your ai agent</h3>
+
+                      </div>
+                    </div>
+                  </div>
+              }
               <form onSubmit={handleSubmit} className="ring-1 shadow-xs ring-gray-900/5 sm:rounded-xl ">
                 <div className="border-b border-white/10 pb-5">
 
