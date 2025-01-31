@@ -98,7 +98,15 @@ const CreateAgent = () => {
             res.json(),
         ),
   })
-    console.log("loading", isLoading )
+  const [isVisible, setIsVisible] = useState(false);
+
+  const showComponent = () => {
+    setIsVisible(true);
+    // Cacher le composant après 15 secondes (15000 ms)
+    setTimeout(() => {
+      setIsVisible(false);
+    }, 15000);
+  };
   return (
     <div className="bg-black">
       <div className="relative isolate ">
