@@ -51,7 +51,7 @@ const CreateAgent = () => {
   axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
   axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
   const createAgent = async (data: FormData) => {
-    const { data: response } = await axios.post('http://164.90.229.67:8000/create-agent', data);
+    const { data: response } = await axios.post('https://0515-197-15-57-248.ngrok-free.app/create-agent', data);
     return response.data;
   };
   const queryClient = useQueryClient();

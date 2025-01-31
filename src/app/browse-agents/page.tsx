@@ -55,7 +55,8 @@ const getAgents = async () => {
   axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
   try {
-    const response = await axios.get("http://164.90.229.67:8000/agents",{
+
+    const response = await axios.get("https://0515-197-15-57-248.ngrok-free.app/agents",{
       headers: { "ngrok-skip-browser-warning": "true" }
     });
     // Vérifie si la réponse contient bien des données
