@@ -10,7 +10,6 @@ import LoadingCircle from "@/components/Loader/loading-circle";
 import {XCircleIcon} from "@heroicons/react/16/solid";
 import { motion } from "framer-motion";
 
-
 const CreateAgentSchema = z.object({
   name: z.string().nonempty(),
   personality_prompt: z.string().min(3),
@@ -37,6 +36,7 @@ const CreateAgent = () => {
   const [toastError, setToastError] = useState(false);
   const [open, setOpen] = useState(false)
   const [showError, setError] = useState(false)
+  const [showFakeLoader, setshowFakeLoader] = useState(false)
   const validateForm = (data: FormData): FormErrors => {
     try {
       CreateAgentSchema.parse(data);
@@ -51,17 +51,22 @@ const CreateAgent = () => {
   axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
   axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
   const createAgent = async (data: FormData) => {
-    const { data: response } = await axios.post('https://0515-197-15-57-248.ngrok-free.app/create-agent', data);
+    await new Promise(resolve => setTimeout(resolve, 5000));
+    setshowFakeLoader(true)
+    const { data: response } = await axios.post('https://bf19-197-15-57-248.ngrok-free.app/create-agent', data);
+
     return response.data;
   };
   const queryClient = useQueryClient();
   const { mutate, isLoading } = useMutation(createAgent, {
     onSuccess: data => {
+      setshowFakeLoader(false)
       console.log(data);
       // toast.success('Agent create with success');
       setOpen(true)
     },
     onError: () => {
+      setshowFakeLoader(false)
       console.log("error")
       setError(true)
       toast.error('Error while create AI agent !');
@@ -87,9 +92,9 @@ const CreateAgent = () => {
     const { name, value } = e.target;
     const updatedFormData = { ...formData, [name]: value };
     setFormData(updatedFormData);
-    // Validate form on each change
-    const newErrors = validateForm(updatedFormData);
-    setErrors(newErrors);
+    // // Validate form on each change
+    // const newErrors = validateForm(updatedFormData);
+    // setErrors(newErrors);
   };
   const {  error, data } = useQuery({
     queryKey: ['repoData'],
@@ -98,15 +103,7 @@ const CreateAgent = () => {
             res.json(),
         ),
   })
-  const [isVisible, setIsVisible] = useState(false);
 
-  const showComponent = () => {
-    setIsVisible(true);
-    // Cacher le composant après 15 secondes (15000 ms)
-    setTimeout(() => {
-      setIsVisible(false);
-    }, 15000);
-  };
   return (
     <div className="bg-black">
       <div className="relative isolate ">
@@ -115,7 +112,7 @@ const CreateAgent = () => {
             <div className=" basis-2/3 p-5 bg-gray-950  rounded-lg">
               <MyDialog openDialog={open} sendToParent={setOpen} />
 
-              { isLoading &&
+              { (isLoading || showFakeLoader) &&
                   <motion.div
                       initial={{ y: -20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}

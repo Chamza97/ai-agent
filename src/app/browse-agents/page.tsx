@@ -56,7 +56,7 @@ const getAgents = async () => {
 
   try {
 
-    const response = await axios.get("https://0515-197-15-57-248.ngrok-free.app/agents",{
+    const response = await axios.get("https://bf19-197-15-57-248.ngrok-free.app/agents",{
       headers: { "ngrok-skip-browser-warning": "true" }
     });
     // Vérifie si la réponse contient bien des données
@@ -84,10 +84,6 @@ const BrowseAgents = () => {
     retry: 2, // Tente de refaire la requête 2 fois en cas d'échec
   });
 
-  if (isLoading) return <p>Chargement...</p>;
-
-
-
   return (
     <div className="bg-black">
 
@@ -96,7 +92,6 @@ const BrowseAgents = () => {
           <div className="flex justify-center items-center flex-row">
             <div className="basis-2/3 p-5 rounded-lg">
               <div className="mx-auto max-w-7xl px-6 lg:px-8">
-
                 <div className="mx-auto max-w-2xl lg:mx-0">
                   <h2 className="text-2xl font-semibold tracking-tight text-pretty text-white sm:text-2xl">
                     Browse all agents created on our platform
@@ -108,15 +103,11 @@ const BrowseAgents = () => {
                 </div>
 
                 <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-
-
                     { isLoading &&
                         <div className="mx-auto items-center p-4 content-center  ">
                         <LoadingCircle />
                         </div>
                     }
-
-
                   {agents && agents.map((agent: any) => (
                     <article
                       key={agent.id}

@@ -9,9 +9,7 @@ const HomePage = () => {
         <div className="absolute inset-0 ">
           <BlackholeEffect />
         </div>
-
-
-        <div className="relative z-10"> {/* Ajoutez z-10 ici */}
+        <div className="relative z-10">
           <div
               aria-hidden="true"
               className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
