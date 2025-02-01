@@ -6,6 +6,7 @@ import Image from "next/image";
 import { MdOutlineMenu } from "react-icons/md";
 import {XMarkIcon} from "@heroicons/react/24/outline";
 import Toaster from "react-hot-toast";
+import Link from "next/link";
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -62,10 +63,14 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
     <div className={wrapperStyles}>
       <header className="absolute inset-x-0 top-0 z-50">
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
-          <div className="flex lg:flex-1">
-            <a href="/" className="-m-1.5 p-1.5 text-white">
-              <Image width={100}  height={75} src="/Trianglelogoagentxhubalp3.png" alt="logo"/>
-            </a>
+          <div className="flex lg:flex-1 h-[25px]">
+            {/*<a href="/" className="-m-1.5 p-1.5  text-white">*/}
+            {/*  <Image width={100}  height={75} src="/Trianglelogoagentxhubalp3.png" alt="logo"/>*/}
+            {/*</a>*/}
+            <Link href="/" className="-m-1.5 p-1.5  h-[25px] text-white">
+              <Image width={110}  height={30} src="/Trianglelogoagentxhubalp3.png" alt="logo"/>
+            </Link>
+
           </div>
           <div className="flex lg:hidden">
             <button
@@ -84,12 +89,6 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            {/*<Link*/}
-            {/*  href="browse-agents"*/}
-            {/*  className="-mx-3 block rounded-lg px-3 py-2 text-base/100 mr-1 text-white"*/}
-            {/*>*/}
-            {/*  browse Agents*/}
-            {/*</Link>*/}
             <a
               href="create-agent"
               type="button"
@@ -103,10 +102,10 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
           <div className="fixed inset-0 z-50" />
           <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-white/10">
             <div className="flex items-center justify-between">
-              <a href="#" className="-m-1.5 p-1.5">
-                <span className="sr-only">Your Company</span>
-                <Image width={250}  height={100} src="/Trianglelogoagentxhubalp3.png" alt="logo"/>
-              </a>
+              <Link href="/" className="-m-1.5 p-1.5">
+
+                <Image width={110}  height={25} src="/Trianglelogoagentxhubalp3.png" alt="logo"/>
+              </Link>
               <button
                   type="button"
                   onClick={() => setMobileMenuOpen(false)}
