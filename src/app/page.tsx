@@ -5,10 +5,6 @@ import BlackholeEffect from "./animation/page";
 const HomePage = () => {
   return (
       <div className="bg-black min-h-screen ">
-
-        <div className="absolute inset-0 ">
-          <BlackholeEffect />
-        </div>
         <div className="relative z-10">
           <div
               aria-hidden="true"

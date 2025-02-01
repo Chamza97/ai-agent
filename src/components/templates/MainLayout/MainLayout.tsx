@@ -64,7 +64,7 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
             <a href="/" className="-m-1.5 p-1.5 text-white">
-              <Image width={60}  height={60} src="/Trianglelogo3.jpg" alt="logo"/>
+              <Image width={60}  height={60} src="/Trianglelogoagentxhubalp3.png" alt="logo"/>
             </a>
           </div>
           <div className="flex lg:hidden">
@@ -105,7 +105,7 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
-                <Image width={50}  height={50} src="/Trianglelogo3.jpg" alt="logo"/>
+                <Image width={250}  height={100} src="/Trianglelogoagentxhubalp3.png" alt="logo"/>
               </a>
               <button
                   type="button"
@@ -116,7 +116,6 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
                 <XMarkIcon aria-hidden="true" className="size-6" />
               </button>
             </div>
-
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-500/25">
                 <div className="py-5">
