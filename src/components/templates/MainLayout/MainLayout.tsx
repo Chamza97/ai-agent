@@ -64,9 +64,7 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
       <header className="absolute inset-x-0 top-0 z-50">
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1 h-[25px]">
-            {/*<a href="/" className="-m-1.5 p-1.5  text-white">*/}
-            {/*  <Image width={100}  height={75} src="/Trianglelogoagentxhubalp3.png" alt="logo"/>*/}
-            {/*</a>*/}
+
             <Link href="/" className="-m-1.5 p-1.5  h-[25px] text-white">
               <Image width={110}  height={30} src="/Trianglelogoagentxhubalp3.png" alt="logo"/>
             </Link>
@@ -144,7 +142,7 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
                 <div className="mx-auto flex gap-x-4 content-center ">
                   <div className="py-5 mx-auto flex gap-x-4 ">
                     {navigation.social.map((item) => (
-                        <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-300">
+                        <a key={item.name} href={item.href} className="text-white hover:text-white">
                           <span className="sr-only">{item.name}</span>
                           <item.icon aria-hidden="true" className="size-6" />
                         </a>
@@ -167,7 +165,7 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
           <div className="mx-auto  md:flex flex items-center md:items-center md:justify-between ">
             <div className="flex gap-x-1 ">
               {navigation.social.map((item) => (
-                  <a key={item.name} href={item.href} className="text-gray-400 hover:text-gray-300">
+                  <a key={item.name} href={item.href} className="text-white hover:text-white">
                     <span className="sr-only">{item.name}</span>
                     <item.icon aria-hidden="true" className="size-6" />
                   </a>

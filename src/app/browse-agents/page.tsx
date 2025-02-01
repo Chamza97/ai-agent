@@ -113,7 +113,7 @@ const BrowseAgents = () => {
                           <Image width={15}  height={15} src="/icons8-ai-64.png" className="inline mr-1" alt="logo"/>
                           {agent.agent_name}
                         </h2>
-                        <p className="text-sm/6 text-gray-500">Created by @{agent.name}</p>
+                        <p className="text-sm/6 text-gray-500">Created by {agent.name}</p>
                       </div>
                       <div className="group relative">
                         <h2 className="mt-2 text-sm/6 font-semibold text-white">Personality</h2>
