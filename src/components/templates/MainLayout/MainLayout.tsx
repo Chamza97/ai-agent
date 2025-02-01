@@ -64,7 +64,7 @@ export const MainLayout = ({ children, className }: MainLayoutProps) => {
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
             <a href="/" className="-m-1.5 p-1.5 text-white">
-              <Image width={60}  height={60} src="/Trianglelogoagentxhubalp3.png" alt="logo"/>
+              <Image width={100}  height={75} src="/Trianglelogoagentxhubalp3.png" alt="logo"/>
             </a>
           </div>
           <div className="flex lg:hidden">
