@@ -132,7 +132,6 @@ const BrowseAgents = () => {
                               href={'' + agent.twitter_link}
                               className="  font-semibold text-xs hover:text-gray-900 dark:hover:text-white dark:text-gray-400"
                           >
-
                             View on X
                           </a>
                         </div>
