@@ -56,7 +56,7 @@ const getAgents = async () => {
 
   try {
 
-    const response = await axios.get("https://bf19-197-15-57-248.ngrok-free.app/agents",{
+    const response = await axios.get("https://agentx-hub.duckdns.org/agents",{
       headers: { "ngrok-skip-browser-warning": "true" }
     });
     // Vérifie si la réponse contient bien des données

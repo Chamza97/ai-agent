@@ -53,7 +53,7 @@ const CreateAgent = () => {
   const createAgent = async (data: FormData) => {
     await new Promise(resolve => setTimeout(resolve, 5000));
     setshowFakeLoader(true)
-    const { data: response } = await axios.post('https://bf19-197-15-57-248.ngrok-free.app/create-agent', data);
+    const { data: response } = await axios.post('https://agentx-hub.duckdns.org/create-agent', data);
 
     return response.data;
   };
