@@ -37,7 +37,7 @@ const HomePage = () => {
                 </div>
                 <div className="mt-10 gap-x-6">
                   <h5 className="font-semibold tracking-tight text-balance text-white">
-                    fM8Gr3WvECPw8jSQvugxBpRpzVAnZn2JzjHqEPHpump
+                    RjkkqbYec2f6wtq2jmiCscK4yjZ3HufAL7Crq7Hpump
                   </h5>
                 </div>
               </div>
